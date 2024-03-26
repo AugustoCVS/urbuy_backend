@@ -1,6 +1,6 @@
 package api.urbuy.domain.product;
 
-import api.urbuy.domain.order.Order;
+import api.urbuy.domain.purchase.Purchase;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,25 +12,31 @@ public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String description;
     private String price;
     private String amount;
+    private String img;
+    private String brand;
+    private String category;
+    private String description;
     private boolean active;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> Order;
+    private List<Purchase> Purchase;
 
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, String price, String amount) {
+    public Product(Long id, String name, String price, String amount, String img, String brand, String category, String description) {
         this.active = true;
         this.id = id;
         this.name = name;
-        this.description = description;
         this.price = price;
         this.amount = amount;
+        this.img = img;
+        this.brand = brand;
+        this.category = category;
+        this.description = description;
     }
 
     public Product(registerProductsData data){
@@ -39,15 +45,14 @@ public class Product {
         this.description = data.description();
         this.price = data.price();
         this.amount = data.amount();
+        this.img = data.img();
+        this.brand = data.brand();
+        this.category = data.category();
     }
 
     public void updateData(updateProductData data){
         if(data.name() != null){
             this.name = data.name();
-        }
-
-        if(data.description() != null){
-            this.description = data.description();
         }
 
         if(data.price() != null){
@@ -56,6 +61,22 @@ public class Product {
 
         if(data.amount() != null){
             this.amount = data.amount();
+        }
+
+        if(data.img() != null){
+            this.img = data.img();
+        }
+
+        if(data.brand() != null){
+            this.brand = data.brand();
+        }
+
+        if(data.category() != null){
+            this.category = data.category();
+        }
+
+        if(data.description() != null){
+            this.description = data.description();
         }
     }
 
@@ -109,6 +130,30 @@ public class Product {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override

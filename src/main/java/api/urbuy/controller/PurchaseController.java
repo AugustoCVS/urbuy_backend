@@ -1,24 +1,21 @@
 package api.urbuy.controller;
 
-import api.urbuy.domain.address.*;
-import api.urbuy.domain.order.*;
+import api.urbuy.domain.purchase.*;
 import api.urbuy.domain.product.ProductRepository;
 import api.urbuy.domain.user.UserRepository;
-import api.urbuy.domain.user.detailsUserData;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/purchase")
 @SecurityRequirement(name = "bearer-key")
-public class OrderController {
+public class PurchaseController {
 
     @Autowired
     private UserRepository user_repository;
@@ -27,40 +24,40 @@ public class OrderController {
     private ProductRepository product_repository;
 
     @Autowired
-    private OrderRepository repository;
+    private PurchaseRepository repository;
 
     @PostMapping("/register/{userId}/{productId}")
     @Transactional
-    public ResponseEntity<?> registerOrder(
+    public ResponseEntity<?> registerPurchase(
             @PathVariable Long userId,
             @PathVariable Long productId,
-            @RequestBody @Valid registerOrderData data) {
+            @RequestBody @Valid registerPurchaseData data) {
 
         var user = user_repository.getReferenceById(userId);
         var product = product_repository.getReferenceById(productId);
 
-        Order order = new Order(data);
-        order.setUser(user);
-        order.setProduct(product);
-        repository.save(order);
+        Purchase purchase = new Purchase(data);
+        purchase.setUser(user);
+        purchase.setProduct(product);
+        repository.save(purchase);
 
-        return ResponseEntity.ok(new detailsOrderData(order));
+        return ResponseEntity.ok(new detailsPurchaseData(purchase));
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity<?> getOrdersByProductId(@PathVariable Long productId) {
-        List<Order> orders = repository.findAllByProductId(productId);
-        return ResponseEntity.ok(orders);
+    public ResponseEntity<?> getPurchasesByProductId(@PathVariable Long productId) {
+        List<Purchase> purchases = repository.findAllByProductId(productId);
+        return ResponseEntity.ok(purchases);
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<?> getOrdersByUserId(@PathVariable Long userId) {
-        List<Order> orders = repository.findAllByUserId(userId);
-        return ResponseEntity.ok(orders);
+    public ResponseEntity<?> getPurchasesByUserId(@PathVariable Long userId) {
+        List<Purchase> purchases = repository.findAllByUserId(userId);
+        return ResponseEntity.ok(purchases);
     }
 
     @GetMapping("/{userId}/{productId}/{id}")
-    public ResponseEntity<?> getOrdersByUserId(@PathVariable Long userId, @PathVariable Long productId, @PathVariable Long id) {
+    public ResponseEntity<?> getPurchaseByUserId(@PathVariable Long userId, @PathVariable Long productId, @PathVariable Long id) {
         var user = user_repository.getReferenceById(userId);
         var product = product_repository.getReferenceById(productId);
         var order = repository.getReferenceById(id);
@@ -68,7 +65,7 @@ public class OrderController {
         if(order.getUser().getId().equals(userId) && order.getProduct().getId().equals(productId)){
             var list = repository.getReferenceById(id);
 
-            return ResponseEntity.ok(new detailsOrderData(list));
+            return ResponseEntity.ok(new detailsPurchaseData(list));
         }
 
 
@@ -76,24 +73,24 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<detailsOrderData> list(@PathVariable Long id){
+    public ResponseEntity<detailsPurchaseData> list(@PathVariable Long id){
         var list = repository.getReferenceById(id);
-        return ResponseEntity.ok(new detailsOrderData(list));
+        return ResponseEntity.ok(new detailsPurchaseData(list));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody @Valid updateOrderData data){
+    public ResponseEntity update(@PathVariable Long id, @RequestBody @Valid updatePurchaseData data){
         var order = repository.getReferenceById(id);
 
         order.updateData(data);
 
-        return ResponseEntity.ok(new detailsOrderData(order));
+        return ResponseEntity.ok(new detailsPurchaseData(order));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id){
-        Order order = repository.getReferenceById(id);
-        order.softDelete();
+        Purchase purchase = repository.getReferenceById(id);
+        purchase.softDelete();
 
         return ResponseEntity.noContent().build();
     }

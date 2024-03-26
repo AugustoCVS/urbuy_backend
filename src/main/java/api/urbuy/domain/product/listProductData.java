@@ -1,6 +1,6 @@
 package api.urbuy.domain.product;
 
-public record listProductData(Long id, String name, String description, String price, String amount) {
+public record listProductData(Long id, String name, String description, String price, String amount, String img, String brand, String category) {
 
     public listProductData(Product product){
         this(
@@ -8,7 +8,10 @@ public record listProductData(Long id, String name, String description, String p
                 product.getName(),
                 product.getDescription(),
                 product.getPrice(),
-                product.getAmount()
+                product.getAmount(),
+                product.getImg(),
+                product.getBrand(),
+                product.getCategory()
         );
     }
 }

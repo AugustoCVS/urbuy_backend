@@ -1,8 +1,8 @@
-package api.urbuy.domain.order;
+package api.urbuy.domain.purchase;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record registerOrderData(
+public record registerPurchaseData(
         @NotBlank(message = "O nome do pedido não pode ser vazio")
         String name,
         @NotBlank(message = "A data do pedido não pode ser vazio")

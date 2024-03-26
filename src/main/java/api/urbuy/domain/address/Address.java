@@ -16,7 +16,6 @@ public class Address {
     private String street;
     private String number;
     private String complement;
-
     private boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)

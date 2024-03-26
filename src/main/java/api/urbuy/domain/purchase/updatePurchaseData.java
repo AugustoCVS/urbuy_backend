@@ -1,6 +1,6 @@
-package api.urbuy.domain.order;
+package api.urbuy.domain.purchase;
 
-public record updateOrderData(
+public record updatePurchaseData(
         String name,
         String date,
         String price,

@@ -29,7 +29,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<listProductData>> list(@PageableDefault(size = 20, sort = {"name"}) Pageable pageable){
+    public ResponseEntity<Page<listProductData>> list(@PageableDefault(size = 20, sort = {"category"}) Pageable pageable){
         var page = repository.findAllByActiveTrue(pageable).map(listProductData::new);
         return ResponseEntity.ok(page);
     }

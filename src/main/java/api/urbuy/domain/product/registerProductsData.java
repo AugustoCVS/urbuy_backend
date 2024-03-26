@@ -10,6 +10,12 @@ public record registerProductsData(
         @NotBlank(message = "O preço do produto não pode ser vazio")
         String price,
         @NotBlank(message = "A quantidade do produto não pode ser vazio")
-        String amount
+        String amount,
+        @NotBlank(message = "A imagem não pode ser vazia")
+        String img,
+        @NotBlank(message = "A marcar não pode ser vazia")
+        String brand,
+        @NotBlank(message = "A categoria não pode ser vazia")
+        String category
 ) {
 }
