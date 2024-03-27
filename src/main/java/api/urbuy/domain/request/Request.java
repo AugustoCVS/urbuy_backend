@@ -1,5 +1,7 @@
 package api.urbuy.domain.request;
 
+import api.urbuy.domain.purchase.registerPurchaseData;
+import api.urbuy.domain.purchase.updatePurchaseData;
 import api.urbuy.domain.user.User;
 import jakarta.persistence.*;
 
@@ -34,6 +36,37 @@ public class Request {
         this.price = price;
         this.amount = amount;
         this.user = user;
+    }
+
+    public Request(registerRequestData data){
+        this.name = data.name();
+        this.date = data.date();
+        this.price = data.price();
+        this.amount = data.amount();
+        this.category = data.category();
+    }
+
+    public void updateData(updateRequestData data){
+        if(data.name() != null){
+            this.name = data.name();
+        }
+
+        if(data.date() != null){
+            this.date = data.date();
+        }
+
+        if(data.price() != null){
+            this.price = data.price();
+        }
+
+        if(data.amount() != null){
+            this.amount = data.amount();
+        }
+
+        if(data.category() != null){
+            this.category = data.category();
+        }
+        
     }
 
     public Long getId() {
