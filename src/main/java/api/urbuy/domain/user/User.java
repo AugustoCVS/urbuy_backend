@@ -2,6 +2,7 @@ package api.urbuy.domain.user;
 
 import api.urbuy.domain.address.Address;
 import api.urbuy.domain.purchase.Purchase;
+import api.urbuy.domain.request.Request;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,6 +29,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Purchase> purchases;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Request> requests;
 
     public User() {
     }
