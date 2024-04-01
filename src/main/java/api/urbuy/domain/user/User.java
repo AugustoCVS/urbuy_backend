@@ -18,7 +18,9 @@ public class User implements UserDetails {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(unique=true)
     private String email;
+    @Column(unique=true)
     private String cnpj;
     private String password;
     private String confirm_password;
