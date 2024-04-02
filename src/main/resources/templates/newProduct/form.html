@@ -1,0 +1,86 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="p-4 mb-2 bg-body-tertiary rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">UrBuy | Painel</h1>
+            <p class="fw-bold">UrBuy | Novo Produto</p>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand bg-body-tertiary d-flex justify-content-between mb-3">
+        <div class="navbar-nav">
+            <a class="nav-link" href="/home/purchaseList">Historico de compras</a>
+            <a class="nav-link" href="/home/products">Produtos</a>
+        </div>
+    </nav>
+    <div class="card mt-3">
+        <form th:object="${registerProductsData}" class="card-body" action="/home/newProduct" method="POST">
+            <div class="form-group">
+                <label for="name">Produto</label>
+                <input class="form-control" id="name" th:field="*{name}" th:errorclass="is-invalid" placeholder="Nome do produto">
+                <small>Informe qual é o nome do produto.</small>
+                <div th:errors="*{name}" class="invalid-feedback">Erro do nome do produto</div>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Preço</label>
+                <input class="form-control" id="price" th:field="*{price}" th:errorclass="is-invalid" placeholder="Preço do produto">
+                <small>Informe o preço do produto.</small>
+                <div th:errors="*{price}" class="invalid-feedback">Erro no preço do produto</div>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Quantidade</label>
+                <input class="form-control" id="amount" th:field="*{amount}" th:errorclass="is-invalid" placeholder="Qtd. do produto">
+                <small>Informe qual é a quantidade do produto.</small>
+                <div th:errors="*{amount}" class="invalid-feedback">Erro na quantidade do produto</div>
+            </div>
+
+            <div class="form-group">
+                <label for="img">Img url</label>
+                <input class="form-control" id="img" th:field="*{img}" th:errorclass="is-invalid" placeholder="Url da img do produto">
+                <small>Informe a url da img do produto.</small>
+                <div th:errors="*{img}" class="invalid-feedback">Erro na url da img do produto</div>
+            </div>
+
+            <div class="form-group">
+                <label for="brand">Marca</label>
+                <input class="form-control" id="brand" th:field="*{brand}" th:errorclass="is-invalid" placeholder="Marca do produto">
+                <small>Informe a marca do produto.</small>
+                <div th:errors="*{brand}" class="invalid-feedback">Erro da marca do produto</div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Categoria</label>
+                <input class="form-control" id="category" th:field="*{category}" th:errorclass="is-invalid" placeholder="Categoria do produto">
+                <small>Informe a categoria do produto.</small>
+                <div th:errors="*{category}" class="invalid-feedback">Erro da categoria do produto</div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="description">Descrição</label>
+                <textarea class="form-control" id="description" th:field="*{description}" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+            </div>
+            <button class="btn btn-primary mt-3" type="Submit">Cadastrar</button>
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
