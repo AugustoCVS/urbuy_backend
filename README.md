@@ -1,6 +1,6 @@
 # CHALLENGE  2023 - Projeto UrBuy
 
-![ LOGO DO PROJETO ](documentaçao/UrBuyLogo.jpeg)
+![ LOGO DO PROJETO ](documentacao/UrBuyLogo.jpeg)
 
 # Breve apresentação do grupo: 
 * Matheus Martins da Rocha - RM96505 Turma: 2TDSPT(responsável pela entrega de Enterprise APPLICATION DEVELOPMENT e DataBase Application e Data Science)
@@ -52,7 +52,7 @@ tecnologia, tornando a jornada de compra não apenas melhor, mas também mais in
 No mundo cada vez mais complexo do mercado tecnológico, encontrar produtos adequados às necessidades específicas tornou-se um desafio significativo. Nesse contexto, apresentamos nossa proposta tecnológica revolucionária: um sistema de busca personalizado alimentado por um algoritmo inteligente. Esta aplicação visa transformar a experiência de compra de profissionais e entusiastas do setor de tecnologia, simplificando o processo de seleção e economizando tempo valioso.
 
 # Arquitetura da solução:
-![ PROTÓTIPO ](documentaçao/Arquitetura.png)
+![ PROTÓTIPO ](documentacao/Arquitetura.jpeg)
 
 # Principal funcionalidade do sistema: 
 
@@ -62,6 +62,6 @@ Nossa aplicação inovadora utiliza um formulário de busca personalizado para a
 
 link : https://www.youtube.com/watch?v=kGQI-uOhQRM
 
-![ LOGO DO PROJETO ](documentaçao/UrBuyLogo.jpeg)
+![ LOGO DO PROJETO ](documentacao/UrBuyLogo.jpeg)
 
 
