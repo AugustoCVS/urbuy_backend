@@ -54,9 +54,16 @@ No mundo cada vez mais complexo do mercado tecnológico, encontrar produtos adeq
 # Arquitetura da solução:
 ![ PROTÓTIPO ](documentacao/Arquitetura.jpeg)
 
-# Principal funcionalidade do sistema: 
+# Principais funcionalidades do sistema: 
 
+-> Formulário de busca personalizado:
 Nossa aplicação inovadora utiliza um formulário de busca personalizado para ajudar os usuários a encontrarem os produtos mais relevantes em tempo real. Com base nas informações fornecidas, nosso algoritmo inteligente analisa vastas opções disponíveis no mercado tecnológico, apresentando as escolhas mais adequadas de forma instantânea. Essa abordagem centrada no cliente não apenas lista produtos, mas também oferece uma jornada de compra mais inteligente e eficiente.
+
+-> Histórico de compras:
+Nossa aplicação permite que os usuários acessem um histórico de compras detalhado, fornecendo informações sobre compras anteriores, feedbacks dos fornecedores e avaliações dos produtos. Essa funcionalidade é essencial para ajudar os usuários a tomarem decisões informadas e seguras, garantindo que cada compra seja uma escolha bem pensada e satisfatória.
+
+-> Recomendações personalizadas:
+Nossa aplicação oferece recomendações personalizadas com base nas preferências de cada usuário. Essa funcionalidade exclusiva permite que os usuários encontrem produtos relevantes de forma rápida e eficiente, economizando tempo e garantindo uma experiência de compra mais satisfatória.
 
 # Link do vídeo de apresentação:
 
