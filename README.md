@@ -9,7 +9,7 @@
 * Felipe Rios Miranda - RM96726 Turma 2TDSPT (responsável pela entrega de Compliance e Quality Assurance )]
 * Augusto de Carvalho Vertolis Santana - RM96518 Turma 2TDSPT (responsável pela entrega de Hybrid Mobile App Development e Digital Business Enablement)
 
--> Contexto da Aplicação :
+# Contexto da Aplicação 
 
 A multiplicidade de produtos e a necessidade de escolher a opção mais adequada às
 necessidades específicas estão cada vez mais presentes no cotidiano, sendo um dos problemas
