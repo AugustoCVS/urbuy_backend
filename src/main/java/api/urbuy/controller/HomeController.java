@@ -7,6 +7,8 @@ import api.urbuy.domain.product.ProductRepository;
 import api.urbuy.domain.product.registerProductsData;
 import api.urbuy.domain.purchase.Purchase;
 import api.urbuy.domain.purchase.PurchaseRepository;
+import api.urbuy.domain.user.User;
+import api.urbuy.domain.user.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -26,10 +28,21 @@ public class HomeController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("")
     public ModelAndView home() {
 
         return new ModelAndView();
+    }
+
+    @GetMapping("/users")
+    public ModelAndView userList() {
+        List<User> users = userRepository.findAll();
+        ModelAndView mv = new ModelAndView("users");
+        mv.addObject("users", users);
+        return mv;
     }
 
     @GetMapping("/purchaseList")

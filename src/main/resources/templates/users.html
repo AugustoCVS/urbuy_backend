@@ -9,34 +9,34 @@
     <div class="p-4 mb-2 bg-body-tertiary rounded-3">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">UrBuy | Painel</h1>
-            <p class="fw-bold">UrBuy | Historico de compras</p>
+            <p class="fw-bold">UrBuy | Usuários</p>
         </div>
     </div>
 
     <nav class="navbar navbar-expand bg-body-tertiary d-flex justify-content-between mb-3">
         <div class="navbar-nav">
-            <a class="nav-link active" href="/home/purchaseList">Historico de compras</a>
+            <a class="nav-link" href="/home/purchaseList">Historico de compras</a>
             <a class="nav-link" href="/home/products">Produtos</a>
-            <a class="nav-link" href="/home/users">Usuários</a>
+            <a class="nav-link active" href="/home/users">Usuários</a>
         </div>
-        <a href="/home/newProduct/form">
-            <button class="btn btn-outline-secondary me-3">Cadastrar Produto</button>
-        </a>
     </nav>
 
-    <div class="card mb-3" th:each="purchase : ${purchases}">
-        <div class="card-header" th:text="${purchase.name}">Nome do produto</div>
+    <div class="card mb-3" th:each="user : ${users}">
+        <div class="card-header" th:text="${user.name}">Nome do usuário</div>
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-sm-8 mb-3">
                     <div class="row">
-                        <div class="col-md-5">Valor: <span th:text="${purchase.price}"></span></div>
+                        <div class="col-md-5">Id: <span th:text="${user.id}"></span></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">Data da entrega: <span th:text="${purchase.date}"></span></div>
+                        <div class="col-md-5">Cnpj: <span th:text="${user.cnpj}"></span></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">Quantidade: <span th:text="${purchase.amount}"></span></div>
+                        <div class="col-md-5">E-mail: <span th:text="${user.email}"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">Está ativo: <span th:text="${user.active}"></span></div>
                     </div>
                 </div>
             </div>
