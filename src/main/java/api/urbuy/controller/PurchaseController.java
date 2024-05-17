@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/purchase")
@@ -52,19 +53,23 @@ public class PurchaseController {
         return ResponseEntity.ok(new detailsPurchaseData(purchase));
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/list/product/{productId}")
     public ResponseEntity<?> getPurchasesByProductId(@PathVariable Long productId) {
         List<Purchase> purchases = repository.findAllByProductId(productId);
         return ResponseEntity.ok(purchases);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/list/user/{userId}")
     public ResponseEntity<?> getPurchasesByUserId(@PathVariable Long userId) {
         List<Purchase> purchases = repository.findAllByUserId(userId);
-        return ResponseEntity.ok(purchases);
+        List<detailsPurchaseData> detailsList = purchases.stream()
+                .map(detailsPurchaseData::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(detailsList);
     }
 
-    @GetMapping("/{userId}/{productId}/{id}")
+
+    @GetMapping("/list/{userId}/{productId}/{id}")
     public ResponseEntity<?> getPurchaseByUserId(@PathVariable Long userId, @PathVariable Long productId, @PathVariable Long id) {
         var user = user_repository.getReferenceById(userId);
         var product = product_repository.getReferenceById(productId);
