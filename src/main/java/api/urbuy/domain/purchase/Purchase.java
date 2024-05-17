@@ -16,7 +16,7 @@ public class Purchase {
     private String name;
     private String date;
     private String price;
-    private String amount;
+    private int amount;
     private boolean active;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
@@ -29,7 +29,7 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(Long id, String name, String date, String price, String amount, User user, Product product) {
+    public Purchase(Long id, String name, String date, String price, int amount, User user, Product product) {
         this.active = true;
         this.id = id;
         this.name = name;
@@ -60,7 +60,7 @@ public class Purchase {
             this.price = data.price();
         }
 
-        if(data.amount() != null){
+        if(data.amount() != 0){
             this.amount = data.amount();
         }
     }
@@ -97,11 +97,11 @@ public class Purchase {
         this.price = price;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

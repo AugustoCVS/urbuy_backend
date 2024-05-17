@@ -36,6 +36,14 @@ public class PurchaseController {
         var user = user_repository.getReferenceById(userId);
         var product = product_repository.getReferenceById(productId);
 
+        int purchaseQuantity = data.amount();
+        try {
+            product.decreaseQuantity(purchaseQuantity);
+            product_repository.save(product);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
         Purchase purchase = new Purchase(data);
         purchase.setUser(user);
         purchase.setProduct(product);

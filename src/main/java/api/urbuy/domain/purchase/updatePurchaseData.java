@@ -4,6 +4,6 @@ public record updatePurchaseData(
         String name,
         String date,
         String price,
-        String amount
+        int amount
 ) {
 }

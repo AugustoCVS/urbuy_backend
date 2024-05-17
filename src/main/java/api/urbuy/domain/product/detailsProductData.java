@@ -1,6 +1,6 @@
 package api.urbuy.domain.product;
 
-public record detailsProductData(String name, String description, String price, String amount, String img, String brand, String category) {
+public record detailsProductData(String name, String description, String price, int amount, String img, String brand, String category) {
 
     public detailsProductData(Product product){
         this(

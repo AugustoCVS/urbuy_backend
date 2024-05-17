@@ -1,6 +1,6 @@
 package api.urbuy.domain.purchase;
 
-public record listPurchaseData(Long id, String name, String date, String price, String amount) {
+public record listPurchaseData(Long id, String name, String date, String price, int amount) {
 
     listPurchaseData(Purchase purchase){
         this(

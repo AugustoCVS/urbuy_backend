@@ -4,7 +4,7 @@ public record updateProductData(
         String name,
         String description,
         String price,
-        String amount,
+        int amount,
         String img,
         String brand,
         String category

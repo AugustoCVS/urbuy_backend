@@ -29,9 +29,23 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<listProductData>> list(@PageableDefault(size = 20, sort = {"category"}) Pageable pageable){
-        var page = repository.findAllByActiveTrue(pageable).map(listProductData::new);
-        return ResponseEntity.ok(page);
+    public ResponseEntity<Page<listProductData>> list(
+            @RequestParam(value = "category", required = false) String category,
+            @RequestParam(value = "name", required = false) String name,
+            @PageableDefault(size = 20) Pageable pageable) {
+
+        Page<Product> page;
+        if (category != null && !category.isEmpty() && name != null && !name.isEmpty()) {
+            page = repository.findAllByActiveTrueAndCategoryAndNameContainingIgnoreCaseAndAmountGreaterThan(category, name, 0, pageable);
+        } else if (category != null && !category.isEmpty()) {
+            page = repository.findAllByActiveTrueAndCategoryAndAmountGreaterThan(category, 0, pageable);
+        } else if (name != null && !name.isEmpty()) {
+            page = repository.findAllByActiveTrueAndNameContainingIgnoreCaseAndAmountGreaterThan(name, 0, pageable);
+        } else {
+            page = repository.findAllByActiveTrueAndAmountGreaterThan(0, pageable);
+        }
+
+        return ResponseEntity.ok(page.map(listProductData::new));
     }
 
     @GetMapping("/{id}")

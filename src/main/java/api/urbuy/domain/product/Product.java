@@ -13,7 +13,7 @@ public class Product {
     private Long id;
     private String name;
     private String price;
-    private String amount;
+    private int amount;
     private String img;
     private String brand;
     private String category;
@@ -27,7 +27,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, String price, String amount, String img, String brand, String category, String description) {
+    public Product(Long id, String name, String price, int amount, String img, String brand, String category, String description) {
         this.active = true;
         this.id = id;
         this.name = name;
@@ -59,7 +59,7 @@ public class Product {
             this.price = data.price();
         }
 
-        if(data.amount() != null){
+        if(data.amount() != 0){
             this.amount = data.amount();
         }
 
@@ -82,6 +82,14 @@ public class Product {
 
     public void softDelete(){
         this.active = false;
+    }
+
+    public void decreaseQuantity(int amount) {
+        if (this.amount >= amount) {
+            this.amount -= amount;
+        } else {
+            throw new IllegalArgumentException("Quantidade insuficiente em estoque");
+        }
     }
 
     public Long getId() {
@@ -116,11 +124,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

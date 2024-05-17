@@ -64,13 +64,22 @@ public class HomeController {
     }
 
     @GetMapping("/newProduct/form")
-    public ModelAndView form(registerProductsData req) {
+    public ModelAndView form() {
         ModelAndView mv = new ModelAndView("newProduct/form");
+        mv.addObject("registerProductsData", new registerProductsData(
+                "",
+                "",
+                "",
+                0,
+                "",
+                "",
+                ""
+        ));
         return mv;
     }
 
     @PostMapping("/newProduct")
-    public ModelAndView novo(@Valid registerProductsData req, BindingResult result) {
+    public ModelAndView novo(registerProductsData req, BindingResult result) {
         ModelAndView mv;
         if (result.hasErrors()) {
             mv = new ModelAndView("/newProduct/form");

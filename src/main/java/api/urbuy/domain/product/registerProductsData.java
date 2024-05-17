@@ -1,6 +1,7 @@
 package api.urbuy.domain.product;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 
 public record registerProductsData(
         @NotBlank(message = "O nome do produto não pode ser vazio")
@@ -9,8 +10,8 @@ public record registerProductsData(
         String description,
         @NotBlank(message = "O preço do produto não pode ser vazio")
         String price,
-        @NotBlank(message = "A quantidade do produto não pode ser vazio")
-        String amount,
+        @Min(value = 1, message = "A quantidade do pedido deve ser pelo menos 1")
+        int amount,
         @NotBlank(message = "A imagem não pode ser vazia")
         String img,
         @NotBlank(message = "A marcar não pode ser vazia")
