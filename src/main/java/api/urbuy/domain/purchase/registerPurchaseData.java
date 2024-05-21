@@ -8,8 +8,10 @@ public record registerPurchaseData(
         String name,
         @NotBlank(message = "A data do pedido não pode ser vazio")
         String date,
-        @NotBlank(message = "O preço total do pedido não pode ser vazio")
-        String price,
+        @Min(value = 1, message = "O preço não pode ser menor que 1")
+        int price,
+        @NotBlank(message = "A categoria do pedido não pode ser vazia")
+        String category,
         @Min(value = 1, message = "A quantidade do pedido deve ser pelo menos 1")
         int amount
 ) {

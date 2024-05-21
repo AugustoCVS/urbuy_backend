@@ -9,6 +9,14 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
     @EntityGraph(attributePaths = {"user", "product"})
     List<Purchase> findAllByUserId(Long userId);
 
+    @EntityGraph(attributePaths = {"user", "product"})
+    List<Purchase> findAllByUserIdAndNameContainingIgnoreCase(Long userId, String name);
+
+    @EntityGraph(attributePaths = {"user", "product"})
+    List<Purchase> findAllByUserIdAndPrice(Long userId, int price);
+
+    @EntityGraph(attributePaths = {"user", "product"})
+    List<Purchase> findAllByUserIdAndNameContainingIgnoreCaseAndPrice(Long userId, String name, int price);
 
     List<Purchase> findAllByProductId(Long productId);
 }

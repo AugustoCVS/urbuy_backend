@@ -15,7 +15,8 @@ public class Purchase {
     private Long id;
     private String name;
     private String date;
-    private String price;
+    private int price;
+    private String category;
     private int amount;
     private boolean active;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,13 +30,14 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(Long id, String name, String date, String price, int amount, User user, Product product) {
+    public Purchase(Long id, String name, String date, int price, String category, int amount, User user, Product product) {
         this.active = true;
         this.id = id;
         this.name = name;
         this.date = date;
         this.price = price;
         this.amount = amount;
+        this.category = category;
         this.user = user;
         this.product = product;
     }
@@ -45,6 +47,7 @@ public class Purchase {
         this.date = data.date();
         this.price = data.price();
         this.amount = data.amount();
+        this.category = data.category();
     }
 
     public void updateData(updatePurchaseData data){
@@ -56,12 +59,16 @@ public class Purchase {
             this.date = data.date();
         }
 
-        if(data.price() != null){
+        if(data.price() != 0){
             this.price = data.price();
         }
 
         if(data.amount() != 0){
             this.amount = data.amount();
+        }
+
+        if(data.category() != null){
+            this.category = data.category();
         }
     }
 
@@ -89,11 +96,11 @@ public class Purchase {
         this.date = date;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -104,6 +111,10 @@ public class Purchase {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public String getCategory() { return category; }
+
+    public void setCategory(String category) { this.category = category; }
 
     public User getUser() {
         return user;
